@@ -31,3 +31,4 @@ hs_err_pid*
 ### generated files ###
 server/
 client/
+contract-first-project/target/
