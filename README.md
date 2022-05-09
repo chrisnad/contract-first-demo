@@ -4,7 +4,7 @@
 
 
 ```
-openapi-generator generate -g spring --library spring-boot -i petstore.yaml -o server/app
+openapi-generator generate -g spring --library spring-boot -i petstore.yaml -o server
 ```
 
 This will generate all the code for a working spring-boot application server out of the box. To start the server run:
@@ -23,4 +23,8 @@ Your application is accessible at `http://localhost:8080`
 
 
 ## Generate Client SDKs With OpenAPI Generator CLI
+
+```
+openapi-generator generate -g java --library resttemplate -i petstore.yaml -o client
+```
 
