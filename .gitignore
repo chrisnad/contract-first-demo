@@ -32,3 +32,4 @@ hs_err_pid*
 server/
 client/
 contract-first-project/target/
+contract-first-project/pocvenv/
