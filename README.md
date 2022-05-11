@@ -21,6 +21,20 @@ You should see `Tomcat initialized with port(s): 8080 (http)`
 
 Your application is accessible at `http://localhost:8080`
 
+### override showBikeById api method
+```java
+@Override
+    public ResponseEntity<Bike> showBikeById(String bikeId) {
+        System.out.println("Hello Archilocus!");
+        Bike bike = new Bike();
+        bike.setId(Long.valueOf(bikeId));
+        bike.setName("bike" + bikeId);
+        bike.color("red");
+        bike.brand("elops");
+        return ResponseEntity.ok().body(bike);
+    }
+```
+
 
 ## Generate Client SDKs With OpenAPI Generator CLI
 
