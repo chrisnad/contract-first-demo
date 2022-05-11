@@ -4,7 +4,7 @@
 
 
 ```
-openapi-generator generate -g spring --library spring-boot -i petstore.yaml -o server
+openapi-generator generate -g spring --library spring-boot -i bike.yaml -o server
 ```
 
 This will generate all the code for a working spring-boot application server out of the box. To start the server run:
@@ -25,7 +25,7 @@ Your application is accessible at `http://localhost:8080`
 ## Generate Client SDKs With OpenAPI Generator CLI
 
 ```
-openapi-generator generate -g java --library resttemplate -i petstore.yaml -o client
+openapi-generator generate -g java --library resttemplate -i bike.yaml -o client
 ```
 
 ## Run Schemathesis tests
@@ -41,4 +41,4 @@ Install `schemathesis` with `pip install schemathesis`
 
 Make sure your application is running with `mvn spring-boot:run`
 
-Run Schemathesis tests with `schemathesis run src/main/resources/todo.yaml --checks=all --base-url=http://localhost:8080/v1`
+Run Schemathesis tests with `schemathesis run src/main/resources/store.yaml --checks=all --base-url=http://localhost:8080/store/v1`

@@ -1,0 +1,138 @@
+openapi: 3.0.2
+info:
+  title: dkt-store
+  version: 1.0.0
+  description: Item List
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0'
+servers:
+  - url: 'http://localhost:8080/store/v1'
+    description: Localhost
+paths:
+  /items:
+    summary: Path used to manage the list of items.
+    description: 'The REST endpoint/path used to list and create zero or more `item` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.'
+    get:
+      tags:
+        - item
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/item'
+          description: Successful response - returns an array of `item` entities.
+        '400':
+          description: Bad Request
+      operationId: getItems
+      summary: List All items
+      description: Gets a list of all `item` entities.
+    post:
+      requestBody:
+        description: A new `item` to be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/item'
+        required: true
+      tags:
+        - item
+      responses:
+        '201':
+          description: Successful response.
+        '400':
+          description: Bad Request
+      operationId: createItem
+      summary: Create an item
+      description: Creates a new `item`.
+  '/items/{itemId}':
+    summary: Path used to manage a single item.
+    description: 'The REST endpoint/path used to get, update, and delete single instances of an `item`.  This path contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks, respectively.'
+    get:
+      tags:
+        - item
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/item'
+          description: Successful response - returns a single `item`.
+        '400':
+          description: Bad Request
+        '404':
+          description: Item not found
+        '500':
+          description: Internal Server Error
+      operationId: getItem
+      summary: Get an item
+      description: Gets the details of a single instance of a `item`.
+    put:
+      requestBody:
+        description: Updated `item` information.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/item'
+        required: true
+      tags:
+        - item
+      responses:
+        '202':
+          description: Successful response.
+        '400':
+          description: Bad Request
+        '404':
+          description: Item not found
+      operationId: updateItem
+      summary: Update an item
+      description: Updates an existing `item`.
+    delete:
+      tags:
+        - item
+      responses:
+        '204':
+          description: Successful response.
+        '400':
+          description: Bad Request
+        '404':
+          description: Item not found
+      operationId: deleteItem
+      summary: Delete a item
+      description: Deletes an existing `item`.
+    parameters:
+      - schema:
+          type: string
+        name: itemId
+        in: path
+        required: true
+components:
+  schemas:
+    item:
+      title: Item
+      description: Item List
+      type: object
+      example:
+        name: Item
+        description: Description of item
+        date: '2018-05-06T18:25:43.511Z'
+        completed: true
+      properties:
+        name:
+          type: string
+        lastUpdated:
+          type: string
+        description:
+          type: string
+        date:
+          format: date-time
+          type: string
+        available:
+          description: Is Completed
+          type: boolean
+tags:
+  - name: item
+    description: Item

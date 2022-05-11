@@ -83,15 +83,15 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/todo.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/store.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <library>spring-boot</library>
                             <ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>
                             <configOptions>
-                                <basePackage>com.example.todo</basePackage>
-                                <configPackage>com.example.todo.config</configPackage>
-                                <modelPackage>com.example.todo.model</modelPackage>
-                                <apiPackage>com.example.todo.api</apiPackage>
+                                <basePackage>com.decathlon.store</basePackage>
+                                <configPackage>com.decathlon.store.config</configPackage>
+                                <modelPackage>com.decathlon.store.model</modelPackage>
+                                <apiPackage>com.decathlon.store.api</apiPackage>
                                 <sourceFolder>src/main/java</sourceFolder>
                                 <delegatePattern>true</delegatePattern>
                                 <useBeanValidation>true</useBeanValidation>
@@ -109,7 +109,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/petstore.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/bike.yaml</inputSpec>
                             <skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
                             <generatorName>java</generatorName>
                             <library>resttemplate</library>
@@ -121,8 +121,8 @@
                             <generateModelTests>false</generateModelTests>
                             <generateSupportingFiles>true</generateSupportingFiles>
                             <configOptions>
-                                <apiPackage>com.example.petstore.api</apiPackage>
-                                <modelPackage>com.example.petstore.model</modelPackage>
+                                <apiPackage>com.decathlon.bike.api</apiPackage>
+                                <modelPackage>com.decathlon.bike.model</modelPackage>
                                 <useTags>false</useTags>
                                 <!--suppress UnresolvedMavenProperty -->
                                 <additionalModelTypeAnnotations>@lombok.Getter @lombok.Builder(toBuilder = true)

@@ -1,18 +1,18 @@
 openapi: 3.0.2
 info:
   version: 1.0.0
-  title: Swagger Petstore
+  title: dkt-bikes
   license:
     name: MIT
 servers:
-  - url: http://petstore.swagger.io/v1
+  - url: 'http://decathlon.com/bikes/v1'
 paths:
-  /pets:
+  /bikes:
     get:
-      summary: List all pets
-      operationId: listPets
+      summary: List all bikes
+      operationId: listBikes
       tags:
-        - pets
+        - bikes
       parameters:
         - name: limit
           in: query
@@ -23,7 +23,7 @@ paths:
             format: int32
       responses:
         '200':
-          description: A paged array of pets
+          description: A paged array of bikes
           headers:
             x-next:
               description: A link to the next page of responses
@@ -32,18 +32,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pets"
+                $ref: '#/components/schemas/Bikes'
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: '#/components/schemas/Error'
     post:
-      summary: Create a pet
-      operationId: createPets
+      summary: Create a bike
+      operationId: createBikes
       tags:
-        - pets
+        - bikes
       responses:
         '201':
           description: Null response
@@ -52,18 +52,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
-  /pets/{petId}:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bike'
+    parameters: []
+  '/bikes/{bikeId}':
     get:
-      summary: Info for a specific pet
-      operationId: showPetById
-      tags:
-        - pets
+      summary: Info on a specific bike
+      operationId: showBikeById
       parameters:
-        - name: petId
+        - name: bikeId
           in: path
           required: true
-          description: The id of the pet to retrieve
+          description: The id of the bike to retrieve
           schema:
             type: string
       responses:
@@ -72,32 +76,49 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Pet"
+                $ref: '#/components/schemas/Bike'
+              examples:
+                example-1:
+                  value:
+                    id: 0
+                    name: string
+                    color: string
+                    brand: string
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error"
+                $ref: '#/components/schemas/Error'
+      tags:
+        - bikes
+    parameters:
+      - schema:
+          type: string
+        name: bikeId
+        in: path
+        required: true
 components:
   schemas:
-    Pet:
+    Bike:
       type: object
-      required:
-        - id
-        - name
       properties:
         id:
           type: integer
           format: int64
         name:
           type: string
-        tag:
+        color:
           type: string
-    Pets:
+        brand:
+          type: string
+      required:
+        - id
+        - name
+    Bikes:
       type: array
       items:
-        $ref: "#/components/schemas/Pet"
+        $ref: '#/components/schemas/Bike'
     Error:
       type: object
       required:
