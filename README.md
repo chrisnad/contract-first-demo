@@ -28,3 +28,17 @@ Your application is accessible at `http://localhost:8080`
 openapi-generator generate -g java --library resttemplate -i petstore.yaml -o client
 ```
 
+## Run Schemathesis tests
+
+Prerequisites:
+- Python3
+
+Create a virtual environment with `python3 -m venv pocvenv`
+
+Activate the virtual environment with `source pocvenv/bin/activate`
+
+Install `schemathesis` with `pip install schemathesis`
+
+Make sure your application is running with `mvn spring-boot:run`
+
+Run Schemathesis tests with `schemathesis run src/main/resources/todo.yaml --checks=all --base-url=http://localhost:8080/v1`

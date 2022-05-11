@@ -75,6 +75,8 @@ paths:
           description: Todo item not found
         "400":
           description: Bad Request
+        "500":
+          description: Internal Server Error
       operationId: getTodo
       summary: Get a todo
       description: Gets the details of a single instance of a `todo`.
