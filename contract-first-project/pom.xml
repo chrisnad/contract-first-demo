@@ -78,7 +78,36 @@
                 <version>5.3.1</version>
                 <executions>
                     <execution>
-                        <id>1</id>
+                        <id>client</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/bike.yaml</inputSpec>
+                            <skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
+                            <generatorName>java</generatorName>
+                            <library>resttemplate</library>
+                            <generateApis>true</generateApis>
+                            <generateApiDocumentation>false</generateApiDocumentation>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModels>true</generateModels>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateModelTests>false</generateModelTests>
+                            <generateSupportingFiles>true</generateSupportingFiles>
+                            <configOptions>
+                                <apiPackage>com.decathlon.bike.api</apiPackage>
+                                <modelPackage>com.decathlon.bike.model</modelPackage>
+                                <useTags>false</useTags>
+                                <interfaceOnly>true</interfaceOnly>
+                                <sourceFolder>src/main/java</sourceFolder>
+                                <disableHtmlEscaping>true</disableHtmlEscaping>
+                                <useBeanValidation>true</useBeanValidation>
+                                <dateLibrary>java8</dateLibrary>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>server</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
@@ -100,39 +129,10 @@
                                 <oas3>true</oas3>
                                 <useSpringController>true</useSpringController>
                                 <useSpringfox>false</useSpringfox>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>2</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/bike.yaml</inputSpec>
-                            <skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
-                            <generatorName>java</generatorName>
-                            <library>resttemplate</library>
-                            <generateApis>true</generateApis>
-                            <generateApiDocumentation>false</generateApiDocumentation>
-                            <generateApiTests>false</generateApiTests>
-                            <generateModels>true</generateModels>
-                            <generateModelDocumentation>false</generateModelDocumentation>
-                            <generateModelTests>false</generateModelTests>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <configOptions>
-                                <apiPackage>com.decathlon.bike.api</apiPackage>
-                                <modelPackage>com.decathlon.bike.model</modelPackage>
-                                <useTags>false</useTags>
                                 <!--suppress UnresolvedMavenProperty -->
                                 <additionalModelTypeAnnotations>@lombok.Getter @lombok.Builder(toBuilder = true)
                                     @lombok.AllArgsConstructor
                                 </additionalModelTypeAnnotations>
-                                <interfaceOnly>true</interfaceOnly>
-                                <sourceFolder>src/main/java</sourceFolder>
-                                <disableHtmlEscaping>true</disableHtmlEscaping>
-                                <useBeanValidation>true</useBeanValidation>
-                                <dateLibrary>java8</dateLibrary>
                             </configOptions>
                         </configuration>
                     </execution>

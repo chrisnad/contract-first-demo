@@ -30,14 +30,18 @@ public class ItemsImpl implements ItemsApiDelegate {
 
     @Override
     public ResponseEntity<Item> getItem(String itemId) {
+        System.out.println("Hello from stores server!");
         try {
             Bike bike = bikesApi.showBikeById(itemId);
-            Item todo = new Item()
-                    .lastUpdated(OffsetDateTime.now().toString())
-                    .description("it's a bike")
-                    .available(true)
-                    .name(bike.getName());
-            return ResponseEntity.status(HttpStatus.ACCEPTED).body(todo);
+            return ResponseEntity.status(HttpStatus.ACCEPTED)
+                    .body(
+                            Item.builder().build()
+                                    .lastUpdated(OffsetDateTime.now().toString())
+                                    .description("it's a " + bike.getColor() + " " + bike.getBrand())
+                                    .available(true)
+                                    .name(bike.getName()
+                                    )
+                    );
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
@@ -45,7 +49,7 @@ public class ItemsImpl implements ItemsApiDelegate {
 
     @Override
     public ResponseEntity<List<Item>> getItems() {
-        Item item = new Item()
+        Item item = Item.builder().build()
                 .lastUpdated(OffsetDateTime.now().toString())
                 .description("it's shoes!")
                 .available(true)
