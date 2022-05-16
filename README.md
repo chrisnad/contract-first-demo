@@ -4,7 +4,7 @@
 
 
 ```
-openapi-generator generate -g spring --library spring-boot -i bike.yaml -o server
+openapi-generator generate -g spring --library spring-boot -i server/bike.yaml -o server
 ```
 
 This will generate all the code for a working spring-boot application server out of the box. To start the server run:
@@ -24,22 +24,26 @@ Your application is accessible at `http://localhost:8080`
 ### override showBikeById api method
 ```java
 @Override
-    public ResponseEntity<Bike> showBikeById(String bikeId) {
+public ResponseEntity<Bike> showBikeById(String bikeId) {
         System.out.println("Hello Archilocus!");
         Bike bike = new Bike();
         bike.setId(Long.valueOf(bikeId));
-        bike.setName("bike" + bikeId);
+        bike.setName("bike-" + bikeId);
         bike.color("red");
-        bike.brand("elops");
+        if ("1".equals(bikeId)) {
+            bike.brand("elops");
+        } else {
+            bike.brand("btwin");
+        }
         return ResponseEntity.ok().body(bike);
-    }
+}
 ```
 
 
 ## Generate Client SDKs With OpenAPI Generator CLI
 
 ```
-openapi-generator generate -g java --library resttemplate -i bike.yaml -o client
+openapi-generator generate -g java --library resttemplate -i server/bike.yaml -o client
 ```
 
 ## Run Schemathesis tests
