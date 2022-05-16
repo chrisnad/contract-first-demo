@@ -39,6 +39,7 @@ public class ItemsImpl implements ItemsApiDelegate {
                                     .lastUpdated(OffsetDateTime.now().toString())
                                     .description("it's a " + bike.getColor() + " " + bike.getBrand())
                                     .available(true)
+                                    .date(OffsetDateTime.now())
                                     .name(bike.getName()
                                     )
                     );
@@ -53,6 +54,7 @@ public class ItemsImpl implements ItemsApiDelegate {
                 .lastUpdated(OffsetDateTime.now().toString())
                 .description("it's shoes!")
                 .available(true)
+                .date(OffsetDateTime.now())
                 .name("keeprun");
         return ResponseEntity.ok(List.of(item));
     }
