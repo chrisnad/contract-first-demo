@@ -29,7 +29,9 @@ hs_err_pid*
 *.ipr
 
 ### generated files ###
-server/
+!server
+server/*
+!server/bike.yaml
 client/
 contract-first-project/target/
 contract-first-project/pocvenv/

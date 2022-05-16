@@ -82,7 +82,7 @@ paths:
                   value:
                     id: 0
                     name: string
-                    color: string
+                    colour: string
                     brand: string
         default:
           description: unexpected error
@@ -108,7 +108,7 @@ components:
           format: int64
         name:
           type: string
-        color:
+        colour:
           type: string
         brand:
           type: string
