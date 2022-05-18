@@ -7,7 +7,7 @@ info:
     name: Apache 2.0
     url: 'https://www.apache.org/licenses/LICENSE-2.0'
 servers:
-  - url: 'http://localhost:8080/store/v1'
+  - url: 'http://localhost:8088/store/v1'
     description: Localhost
 paths:
   /items:
