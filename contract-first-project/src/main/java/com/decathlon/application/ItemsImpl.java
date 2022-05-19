@@ -55,7 +55,7 @@ public class ItemsImpl implements ItemsApiDelegate {
                 .description("it's shoes!")
                 .available(true)
                 .date(OffsetDateTime.now())
-                .name("keeprun");
+                .name("kiprun");
         return ResponseEntity.ok(List.of(item));
     }
 
