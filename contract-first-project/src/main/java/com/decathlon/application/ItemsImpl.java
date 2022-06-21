@@ -35,13 +35,13 @@ public class ItemsImpl implements ItemsApiDelegate {
             Bike bike = bikesApi.showBikeById(itemId);
             return ResponseEntity.status(HttpStatus.ACCEPTED)
                     .body(
-                            Item.builder().build()
+                            Item.builder()
                                     .lastUpdated(OffsetDateTime.now().toString())
                                     .description("it's a " + bike.getColor() + " " + bike.getBrand())
                                     .available(true)
                                     .date(OffsetDateTime.now())
-                                    .name(bike.getName()
-                                    )
+                                    .name(bike.getName())
+                                    .build()
                     );
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
@@ -50,12 +50,13 @@ public class ItemsImpl implements ItemsApiDelegate {
 
     @Override
     public ResponseEntity<List<Item>> getItems() {
-        Item item = Item.builder().build()
+        Item item = Item.builder()
                 .lastUpdated(OffsetDateTime.now().toString())
                 .description("it's shoes!")
                 .available(true)
                 .date(OffsetDateTime.now())
-                .name("kiprun");
+                .name("kiprun")
+                .build();
         return ResponseEntity.ok(List.of(item));
     }
 
