@@ -4,7 +4,7 @@
 
 
 ```
-openapi-generator generate -g spring --library spring-boot -i server/bike.yaml -o server
+openapi-generator generate -g spring --library spring-boot -i bike-server/bike.yaml -o bike-server
 ```
 
 This will generate all the code for a working spring-boot application server out of the box. To start the server run:
@@ -43,13 +43,15 @@ public ResponseEntity<Bike> showBikeById(String bikeId) {
 ## Generate Client SDKs With OpenAPI Generator CLI
 
 ```
-openapi-generator generate -g java --library resttemplate -i server/bike.yaml -o client
+openapi-generator generate -g java --library resttemplate -i bike-server/bike.yaml -o bike-client
 ```
 
 ## Run Schemathesis tests
 
 Prerequisites:
 - Python3
+
+Move to app directory `cd store-app`
 
 Create a virtual environment with `python3 -m venv pocvenv`
 
@@ -59,4 +61,4 @@ Install `schemathesis` with `pip install schemathesis`
 
 Make sure your application is running with `mvn spring-boot:run`
 
-Run Schemathesis tests with `schemathesis run src/main/resources/store.yaml --checks=all --base-url=http://localhost:8080/store/v1`
+Run Schemathesis tests with `schemathesis run src/main/resources/store.yaml --checks=all --base-url=http://localhost:8088/store/v1`
