@@ -25,7 +25,7 @@ Your application is accessible at `http://localhost:8080`
 ```java
 @Override
 public ResponseEntity<Bike> showBikeById(String bikeId) {
-        System.out.println("Hello Archilocus!");
+        System.out.println("Hello DevSummit!");
         Bike bike = new Bike();
         bike.setId(Long.valueOf(bikeId));
         bike.setName("bike-" + bikeId);

@@ -83,7 +83,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/../server/bike.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/../bike-server/bike.yaml</inputSpec>
                             <skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
                             <generatorName>java</generatorName>
                             <library>resttemplate</library>
