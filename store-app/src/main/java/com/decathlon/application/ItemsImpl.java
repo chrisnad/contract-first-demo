@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
 import java.time.OffsetDateTime;
 
 @Service
@@ -16,11 +17,12 @@ public class ItemsImpl implements ItemsApiDelegate {
 
     @Override
     public Mono<ResponseEntity<Item>> getItem(String itemId, ServerWebExchange exchange) {
-        return Mono.just(ResponseEntity.ok(Item.builder()
-                .color("red")
-                .date(OffsetDateTime.now())
-                .description("mono item")
-                .name("item")
-                .build()));
+        return Mono.delay(Duration.ofMillis(2000)).then(Mono.just(ResponseEntity.ok(Item.builder()
+                        .color("red")
+                        .date(OffsetDateTime.now())
+                        .description("mono item")
+                        .name("item")
+                        .build()))
+                );
     }
 }
