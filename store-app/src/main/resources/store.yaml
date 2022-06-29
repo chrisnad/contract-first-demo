@@ -130,9 +130,8 @@ components:
         date:
           format: date-time
           type: string
-        available:
-          description: Is Completed
-          type: boolean
+        color:
+          type: string
 tags:
   - name: item
     description: Item

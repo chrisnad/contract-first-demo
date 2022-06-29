@@ -25,3 +25,4 @@
 **/*OpenAPIDocumentationConfig.java
 **/*OpenAPI2SpringBoot.java
 **/config/*HomeController.java
+**/*OpenApiGeneratorApplication.java

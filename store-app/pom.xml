@@ -20,11 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -52,20 +48,20 @@
             <artifactId>validation-api</artifactId>
             <version>2.0.1.Final</version>
         </dependency>
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>2.2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger.parser.v3</groupId>
-            <artifactId>swagger-parser</artifactId>
-            <version>2.0.32</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.swagger.core.v3</groupId>-->
+<!--            <artifactId>swagger-annotations</artifactId>-->
+<!--            <version>2.2.1</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.swagger.parser.v3</groupId>-->
+<!--            <artifactId>swagger-parser</artifactId>-->
+<!--            <version>2.1.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.6.7</version>
+            <version>1.6.9</version>
         </dependency>
     </dependencies>
 
@@ -75,37 +71,37 @@
                 <!--https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-maven-plugin/README.md-->
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>5.3.1</version>
+                <version>6.0.0</version>
                 <executions>
-                    <execution>
-                        <id>client</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>${project.basedir}/../bike-server/bike.yaml</inputSpec>
-                            <skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
-                            <generatorName>java</generatorName>
-                            <library>resttemplate</library>
-                            <generateApis>true</generateApis>
-                            <generateApiDocumentation>false</generateApiDocumentation>
-                            <generateApiTests>false</generateApiTests>
-                            <generateModels>true</generateModels>
-                            <generateModelDocumentation>false</generateModelDocumentation>
-                            <generateModelTests>false</generateModelTests>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <configOptions>
-                                <apiPackage>com.decathlon.bike.api</apiPackage>
-                                <modelPackage>com.decathlon.bike.model</modelPackage>
-                                <useTags>false</useTags>
-                                <interfaceOnly>true</interfaceOnly>
-                                <sourceFolder>src/main/java</sourceFolder>
-                                <disableHtmlEscaping>true</disableHtmlEscaping>
-                                <useBeanValidation>true</useBeanValidation>
-                                <dateLibrary>java8</dateLibrary>
-                            </configOptions>
-                        </configuration>
-                    </execution>
+<!--                    <execution>-->
+<!--                        <id>client</id>-->
+<!--                        <goals>-->
+<!--                            <goal>generate</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <inputSpec>${project.basedir}/../bike-server/bike.yaml</inputSpec>-->
+<!--                            <skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>-->
+<!--                            <generatorName>java</generatorName>-->
+<!--                            <library>resttemplate</library>-->
+<!--                            <generateApis>true</generateApis>-->
+<!--                            <generateApiDocumentation>false</generateApiDocumentation>-->
+<!--                            <generateApiTests>false</generateApiTests>-->
+<!--                            <generateModels>true</generateModels>-->
+<!--                            <generateModelDocumentation>false</generateModelDocumentation>-->
+<!--                            <generateModelTests>false</generateModelTests>-->
+<!--                            <generateSupportingFiles>true</generateSupportingFiles>-->
+<!--                            <configOptions>-->
+<!--                                <apiPackage>com.decathlon.bike.api</apiPackage>-->
+<!--                                <modelPackage>com.decathlon.bike.model</modelPackage>-->
+<!--                                <useTags>false</useTags>-->
+<!--                                <interfaceOnly>true</interfaceOnly>-->
+<!--                                <sourceFolder>src/main/java</sourceFolder>-->
+<!--                                <disableHtmlEscaping>true</disableHtmlEscaping>-->
+<!--                                <useBeanValidation>true</useBeanValidation>-->
+<!--                                <dateLibrary>java8</dateLibrary>-->
+<!--                            </configOptions>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
                     <execution>
                         <id>server</id>
                         <goals>
@@ -133,6 +129,7 @@
                                 <additionalModelTypeAnnotations>@lombok.Getter @lombok.Builder(toBuilder = true)
                                     @lombok.AllArgsConstructor
                                 </additionalModelTypeAnnotations>
+                                <reactive>true</reactive>
                             </configOptions>
                         </configuration>
                     </execution>
