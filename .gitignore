@@ -28,6 +28,9 @@ hs_err_pid*
 *.iml
 *.ipr
 
+### mac ###
+.DS_Store
+
 ### generated files ###
 !bike-server
 bike-server/*
